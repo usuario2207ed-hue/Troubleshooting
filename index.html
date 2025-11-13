@@ -197,15 +197,15 @@
     </div>
 
     <script>
-        // Função para mostrar a notificação de boas-vindas
+       
         function showWelcomeNotification() {
-            // Verifica se o navegador suporta notificações
+           
             if (!("Notification" in window)) {
                 console.warn("Este navegador não suporta notificações de desktop.");
                 return;
             }
 
-            // Pede permissão se ainda não foi concedida ou negada
+         
             if (Notification.permission === "default") {
                 Notification.requestPermission().then(permission => {
                     if (permission === "granted") {
@@ -213,33 +213,33 @@
                     }
                 });
             } else if (Notification.permission === "granted") {
-                // Se a permissão já foi concedida, apenas cria a notificação
+              
                 createNotification();
             }
         }
 
-        // Cria e exibe a notificação
+       
         function createNotification() {
             const githubLink = 'https://github.com/usuario2207ed-hue?tab=repositories';
             const notificationTitle = '🛠️ Olá, seja-vindo!';
             const notificationBody = 'Visite meu repertório de programas no GITHUB - Clicando aqui.';
             const notificationOptions = {
                 body: notificationBody,
-                icon: 'https://i.imgur.com/GjNl0Pj.png' // Ícone genérico para uma notificação
+                icon: 'https://static.vecteezy.com/ti/vetor-gratis/p1/29096533-eficaz-trabalho-em-equipe-carreira-crescimento-lucro-ou-melhoria-abordagens-carreira-desenvolvimento-conceito-simbolo-do-trabalho-em-equipe-empresarios-trabalhos-juntos-para-empurrar-a-seta-grafico-acima-projeto-ilustracao-vetor.jpg'
             };
 
             const notification = new Notification(notificationTitle, notificationOptions);
 
-            // Adiciona o evento de clique na notificação para abrir a URL em um pop-up
+           
             notification.onclick = function(event) {
-                event.preventDefault(); // Evita o comportamento padrão (se houver)
+                event.preventDefault(); 
                 window.open(githubLink, '_blank', 'popup=yes,width=800,height=600');
             };
         }
 
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Chama a função da notificação ao carregar a página
+         
             showWelcomeNotification();
             
            
@@ -1101,4 +1101,5 @@
     </script>
 
 </body>
+
 </html>
