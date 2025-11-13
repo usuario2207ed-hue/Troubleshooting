@@ -1,0 +1,1104 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🛠️Troubleshooting</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb; 
+        }
+
+
+        @keyframes title-glow {
+            0%, 100% {
+                text-shadow: 0 0 8px rgba(29, 78, 216, 0.3), 0 0 16px rgba(29, 78, 216, 0.2);
+            }
+            50% {
+                text-shadow: 0 0 16px rgba(29, 78, 216, 0.5), 0 0 32px rgba(29, 78, 216, 0.3);
+            }
+        }
+
+        .animated-title {
+            animation: title-glow 4s infinite alternate;
+            color: #1e3a8a; 
+        }
+
+
+        @keyframes footer-pulse {
+            0%, 100% {
+                background-color: #1f2937; 
+            }
+            50% {
+                background-color: #374151; 
+            }
+        }
+
+        .animated-footer {
+            animation: footer-pulse 5s infinite ease-in-out;
+        }
+
+
+        .modal-body {
+            scrollbar-width: thin;
+            scrollbar-color: #4a5568 #e5e7eb;
+        }
+
+
+        .modal-body::-webkit-scrollbar {
+            width: 8px;
+        }
+        .modal-body::-webkit-scrollbar-track {
+            background: #e5e7eb;
+            border-radius: 10px;
+        }
+        .modal-body::-webkit-scrollbar-thumb {
+            background-color: #4a5568;
+            border-radius: 10px;
+            border: 2px solid #e5e7eb;
+        }
+
+ 
+        .modal-body h4 {
+   
+            @apply text-xl font-black text-blue-800 mt-6 mb-3 border-b-2 border-blue-100 pb-1; /* Aumento do negrito e margem */
+        }
+        .modal-body p {
+    
+            @apply text-gray-700 mb-3 text-base leading-relaxed;
+        }
+        .modal-body ul {
+     
+            @apply list-disc list-inside pl-4 mb-3 text-gray-700;
+        }
+        .modal-body li {
+      
+            @apply mb-2 leading-snug;
+        }
+        .modal-body strong {
+     
+            @apply font-extrabold text-gray-900; 
+        }
+    
+        .modal-body p:not(:last-child),
+        .modal-body ul:not(:last-child) {
+             margin-bottom: 1rem !important; 
+        }
+        .modal-body ol {
+      
+            @apply list-decimal list-inside pl-4 mb-3;
+        }
+        .modal-body ol > li {
+   
+            @apply mb-4 leading-snug;
+        }
+        .modal-body table {
+    
+            @apply w-full min-w-full divide-y divide-gray-200 border border-gray-300 mt-4 mb-8;
+        }
+        .modal-body th {
+      
+            @apply px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider bg-gray-50;
+        }
+        .modal-body td {
+     
+            @apply px-4 py-4 text-sm text-gray-800;
+            vertical-align: top;
+        }
+        .modal-body tr:nth-child(even) {
+            @apply bg-gray-50;
+        }
+
+    </style>
+</head>
+<body class="bg-white">
+
+    <div class="container mx-auto px-4 py-12 min-h-screen pb-24"> <header class="text-center mb-12">
+            <h1 class="animated-title text-4xl md:text-5xl font-extrabold">
+                Troubleshooting
+            </h1>
+            <p class="text-lg text-gray-600 mt-2">Um guia passo a passo para resolução de problemas.</p>
+        </header>
+
+        <main class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <button data-modal-id="0" class="menu-button bg-blue-700 text-white font-semibold py-5 px-6 rounded-lg shadow-lg hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 transform hover:-translate-y-1">
+                    1. Estrutura de Robô Industrial
+                </button>
+                <button data-modal-id="1" class="menu-button bg-blue-700 text-white font-semibold py-5 px-6 rounded-lg shadow-lg hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 transform hover:-translate-y-1">
+                    2. Manual Técnico: Estrutura KUKA
+                </button>
+                <button data-modal-id="2" class="menu-button bg-blue-700 text-white font-semibold py-5 px-6 rounded-lg shadow-lg hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300 transform hover:-translate-y-1">
+                    3. Manual Técnico: Sistema Elétrico
+                </button>
+                <button data-modal-id="3" class="menu-button bg-gray-700 text-white font-semibold py-5 px-6 rounded-lg shadow-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-all duration-300 transform hover:-translate-y-1">
+                    4. Tipos de Falhas (Geral)
+                </button>
+                <button data-modal-id="4" class="menu-button bg-gray-700 text-white font-semibold py-5 px-6 rounded-lg shadow-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-all duration-300 transform hover:-translate-y-1">
+                    5. Top 20 Falhas e Correções
+                </button>
+                <button data-modal-id="5" class="menu-button bg-gray-700 text-white font-semibold py-5 px-6 rounded-lg shadow-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition-all duration-300 transform hover:-translate-y-1">
+                    6. Principais Falhas Detalhadas
+                </button>
+                <button data-modal-id="6" class="menu-button bg-orange-600 text-white font-semibold py-5 px-6 rounded-lg shadow-lg hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50 transition-all duration-300 transform hover:-translate-y-1">
+                    7. Tipos de Tintas (Pintura)
+                </button>
+                <button data-modal-id="7" class="menu-button bg-orange-600 text-white font-semibold py-5 px-6 rounded-lg shadow-lg hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50 transition-all duration-300 transform hover:-translate-y-1">
+                    8. Defeitos Comuns na Pintura
+                </button>
+                <button data-modal-id="8" class="menu-button bg-orange-600 text-white font-semibold py-5 px-6 rounded-lg shadow-lg hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50 transition-all duration-300 transform hover:-translate-y-1">
+                    9. Defeitos em Robôs de Pintura
+                </button>
+                <button data-modal-id="9" class="menu-button bg-teal-600 text-white font-semibold py-5 px-6 rounded-lg shadow-lg hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50 transition-all duration-300 transform hover:-translate-y-1">
+                    10. Plano de Manutenção
+                </button>
+                <button data-modal-id="10" class="menu-button bg-green-700 text-white font-semibold py-5 px-6 rounded-lg shadow-lg hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-all duration-300 transform hover:-translate-y-1 col-span-1 sm:col-span-2 lg:col-span-3">
+                    🧰 Ferramenta de Análise 6W2H
+                </button>
+                <button data-modal-id="11" class="menu-button bg-green-700 text-white font-semibold py-5 px-6 rounded-lg shadow-lg hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-all duration-300 transform hover:-translate-y-1 col-span-1 sm:col-span-2 lg:col-span-3">
+                    📈 Melhorias Aplicadas
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <footer class="animated-footer fixed bottom-0 left-0 right-0 w-full p-4 text-center text-white font-medium z-10">
+        Desenvolvido por Edmilson Charif Elmaes
+    </footer>
+
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50 hidden">
+        <div id="modal-overlay" class="absolute inset-0"></div>
+        
+        <div id="modal-content" class="bg-white rounded-lg shadow-2xl w-full max-w-4xl max-h-[90vh] flex flex-col relative transition-all duration-300 transform scale-95 opacity-0">
+            <header class="flex items-center justify-between p-5 border-b border-gray-200 rounded-t-lg bg-gray-50">
+                <h2 id="modal-title" class="text-2xl font-bold text-gray-800"></h2>
+                <button id="modal-close-x" class="text-gray-400 hover:text-gray-600 transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </header>
+
+            <section id="modal-body" class="modal-body p-6 overflow-y-auto">
+                </section>
+
+            <footer class="flex justify-end p-4 border-t border-gray-200 rounded-b-lg bg-gray-50">
+                <a id="pdf-download" href="6W2H.pdf" download="6W2H.pdf" target="_blank" class="hidden items-center bg-green-600 text-white font-bold py-2 px-5 rounded-lg shadow-md hover:bg-green-700 transition-all mr-4">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    Baixar PDF
+                </a>
+                <button id="modal-close-btn" class="bg-red-600 text-white font-bold py-2 px-5 rounded-lg shadow-md hover:bg-red-700 transition-all">
+                    Fechar
+                </button>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // Função para mostrar a notificação de boas-vindas
+        function showWelcomeNotification() {
+            // Verifica se o navegador suporta notificações
+            if (!("Notification" in window)) {
+                console.warn("Este navegador não suporta notificações de desktop.");
+                return;
+            }
+
+            // Pede permissão se ainda não foi concedida ou negada
+            if (Notification.permission === "default") {
+                Notification.requestPermission().then(permission => {
+                    if (permission === "granted") {
+                        createNotification();
+                    }
+                });
+            } else if (Notification.permission === "granted") {
+                // Se a permissão já foi concedida, apenas cria a notificação
+                createNotification();
+            }
+        }
+
+        // Cria e exibe a notificação
+        function createNotification() {
+            const githubLink = 'https://github.com/usuario2207ed-hue?tab=repositories';
+            const notificationTitle = '🛠️ Olá, seja-vindo!';
+            const notificationBody = 'Visite meu repertório de programas no GITHUB - Clicando aqui.';
+            const notificationOptions = {
+                body: notificationBody,
+                icon: 'https://i.imgur.com/GjNl0Pj.png' // Ícone genérico para uma notificação
+            };
+
+            const notification = new Notification(notificationTitle, notificationOptions);
+
+            // Adiciona o evento de clique na notificação para abrir a URL em um pop-up
+            notification.onclick = function(event) {
+                event.preventDefault(); // Evita o comportamento padrão (se houver)
+                window.open(githubLink, '_blank', 'popup=yes,width=800,height=600');
+            };
+        }
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Chama a função da notificação ao carregar a página
+            showWelcomeNotification();
+            
+           
+            const modalData = [
+               
+                {
+                    title: "1º Estrutura de um Robô Industrial",
+                    showPdf: false,
+                    content: `
+                        <h4>1. Estrutura mecânica</h4>
+                        <p>O corpo de um robô industrial é formado por braços articulados, base, juntas e atuadores. A base é fixa ao chão e dá estabilidade. O braço tem vários eixos de movimentação (geralmente de 4 a 6) que permitem movimentos parecidos com o de um braço humano. As juntas conectam as partes do braço e permitem rotação ou translação. No final do braço fica o efetuador final (ou garra), que pode ser uma pinça, pistola de solda, aplicador de cola, ou ferramenta de pintura.</p>
+
+                        <h4>2. Motores e movimentos</h4>
+                        <p>Os robôs usam motores elétricos, hidráulicos ou pneumáticos. Os elétricos são os mais comuns por serem precisos e limpos. Cada motor controla um eixo, permitindo movimentos lineares ou rotacionais. Os robôs mais modernos têm 6 eixos, o que permite alcançar quase qualquer posição em torno de uma peça.</p>
+
+                        <h4>3. Tipos de robôs</h4>
+                        <ul>
+                            <li><strong>Articulados:</strong> os mais comuns (como o KUKA KR 210), usados para solda e montagem.</li>
+                            <li><strong>Scara:</strong> rápidos e precisos, usados em montagem de peças pequenas.</li>
+                            <li><strong>Cartesianos:</strong> movem-se em eixos retos, usados em empacotamento e transporte.</li>
+                            <li><strong>Delta:</strong> usados para tarefas leves e rápidas, como manipulação de componentes.</li>
+                            <li><strong>Colaborativos (cobots):</strong> trabalham junto com humanos com sensores de segurança.</li>
+                        </ul>
+
+                        <h4>4. Programação</h4>
+                        <p>A programação define trajetórias, velocidades e tarefas. É feita por ensino direto (movendo o robô manualmente para gravar posições) ou por linguagem de programação específica.</p>
+                        <p>Cada fabricante tem seu próprio sistema:</p>
+                        <ul>
+                            <li><strong>KUKA:</strong> usa o KRL (KUKA Robot Language).</li>
+                            <li><strong>ABB:</strong> usa RAPID.</li>
+                            <li><strong>FANUC:</strong> usa TP (Teach Pendant Language).</li>
+                            <li><strong>Yaskawa (Motoman):</strong> usa Inform Language.</li>
+                        </ul>
+
+                        <h4>5. Fabricantes</h4>
+                        <ul>
+                            <li><strong>KUKA (Alemanha):</strong> referência em soldagem e automação automotiva.</li>
+                            <li><strong>ABB (Suíça):</strong> foco em precisão e eletrônica.</li>
+                            <li><strong>FANUC (Japão):</strong> líder em robôs para montagem e pintura.</li>
+                            <li><strong>Yaskawa (Japão):</strong> muito usada em linhas de produção automotiva.</li>
+                            <li><strong>Comau (Itália):</strong> braço da Fiat, usada em fábricas automotivas.</li>
+                        </ul>
+
+                        <h4>6. Aplicações</h4>
+                        <ul>
+                            <li><strong>Soldagem</strong> de carrocerias</li>
+                            <li><strong>Pintura</strong> automotiva</li>
+                            <li><strong>Montagem</strong> de motores</li>
+                            <li><strong>Manuseio</strong> de peças pesadas</li>
+                            <li><strong>Inspeção e controle</strong> de qualidade com câmeras e sensores</li>
+                        </ul>
+                    `
+                },
+              
+                {
+                    title: "2º Manual Técnico – Estrutura do Robô Industrial KUKA",
+                    showPdf: false,
+                    content: `
+                        <h4>1. Estrutura Geral</h4>
+                        <p>O robô KUKA é composto por módulos estruturais articulados, fixados por rolamentos, eixos, motores, sensores e cabos internos. Cada módulo possui coberturas metálicas ou plásticas que protegem os sistemas internos contra poeira, calor e respingos de solda.</p>
+                        <p><strong>Componentes principais:</strong></p>
+                        <ul>
+                            <li><strong>Base fixa</strong> (Base Frame)</li>
+                            <li><strong>Eixo 1</strong> – Rotação da base</li>
+                            <li><strong>Eixo 2</strong> – Braço inferior (ombro)</li>
+                            <li><strong>Eixo 3</strong> – Braço superior (cotovelo)</li>
+                            <li><strong>Eixo 4</strong> – Rotação do punho</li>
+                            <li><strong>Eixo 5</strong> – Inclinação do punho</li>
+                            <li><strong>Eixo 6</strong> – Rotação final (flange / efetuador)</li>
+                            <li><strong>Cabos internos</strong> e chicotes</li>
+                            <li><strong>Unidade de controle</strong> (KRC)</li>
+                            <li><strong>Fonte de energia</strong> e servomotores</li>
+                            <li><strong>Contrapesos</strong> / molas a gás</li>
+                            <li><strong>Sensores</strong> e encoders absolutos</li>
+                        </ul>
+
+                        <h4>2. Base do Robô (Eixo 1)</h4>
+                        <p><strong>Função:</strong> fixa o robô ao solo e permite a rotação de todo o corpo.</p>
+                        <p><strong>Composição CAD:</strong></p>
+                        <ul>
+                            <li><strong>Estrutura de aço</strong> fundido.</li>
+                            <li><strong>Engrenagem</strong> de coroa e pinhão acionada por servomotor AC com redutor harmônico.</li>
+                            <li><strong>Rolamento</strong> de grande diâmetro para suportar o peso do braço.</li>
+                            <li><strong>Conectores</strong> de cabos de energia e comunicação que sobem internamente.</li>
+                        </ul>
+
+                        <h4>3. Braço Inferior (Eixo 2)</h4>
+                        <p><strong>Função:</strong> eleva e abaixa o braço principal.</p>
+                        <p><strong>Composição CAD:</strong></p>
+                        <ul>
+                            <li><strong>Carcaça oca</strong> em alumínio fundido.</li>
+                            <li><strong>Servomotor</strong> principal acoplado a redutor planetário.</li>
+                            <li><strong>Contrapeso</strong> ou mola a gás pressurizada para compensar o peso.</li>
+                            <li><strong>Passagem interna</strong> para cabos e chicotes de sinal.</li>
+                        </ul>
+
+                        <h4>4. Braço Superior (Eixo 3)</h4>
+                        <p><strong>Função:</strong> movimenta o braço como o “cotovelo” humano.</p>
+                        <p><strong>Composição CAD:</strong></p>
+                        <ul>
+                            <li><strong>Estrutura leve</strong> e rígida.</li>
+                            <li><strong>Engrenagens internas</strong> e eixo de transmissão.</li>
+                            <li><strong>Rolamentos</strong> de alta carga.</li>
+                            <li><strong>Tubulação interna</strong> para ar comprimido e cabos do efetuador.</li>
+                        </ul>
+
+                        <h4>5. Punho (Eixos 4, 5 e 6)</h4>
+                        <p><strong>Função:</strong> realiza a orientação fina da ferramenta.</p>
+                        <p><strong>Composição CAD:</strong></p>
+                        <ul>
+                            <li><strong>Três servomotores</strong> compactos independentes.</li>
+                            <li><strong>Redutores harmônicos</strong> em cada eixo para alta precisão angular.</li>
+                            <li><strong>Flange ISO 9409-1</strong> na ponta (onde é fixado o efetuador).</li>
+                            <li><strong>Sensores de posição</strong> absolutos para calibração automática.</li>
+                        </ul>
+
+                        <h4>6. Sistema de Transmissão e Redução</h4>
+                        <p><strong>Tipos de redutores:</strong></p>
+                        <ul>
+                            <li><strong>Planetários:</strong> eixos 1–3 (grande torque).</li>
+                            <li><strong>Harmônicos (wave gear):</strong> eixos 4–6 (alta precisão).</li>
+                        </ul>
+                        <p><strong>Lubrificação:</strong> graxa sintética de longa duração, aplicada em compartimentos selados.</p>
+                        <p><strong>Rolamentos:</strong> selados, autocompensadores, resistentes a vibração.</p>
+
+                        <h4>7. Sistema de Motores e Sensores</h4>
+                        <p><strong>Motores:</strong></p>
+                        <ul>
+                            <li><strong>Servomotores AC</strong> trifásicos brushless.</li>
+                            <li>Equipados com <strong>encoders absolutos</strong> e <strong>freio eletromecânico</strong>.</li>
+                        </ul>
+                        <p><strong>Sensores internos:</strong></p>
+                        <ul>
+                            <li><strong>Temperatura e corrente</strong> em cada motor.</li>
+                            <li><strong>Encoders</strong> nos eixos para controle de posição.</li>
+                            <li><strong>Sensores de fim de curso</strong> e emergência.</li>
+                        </ul>
+
+                        <h4>8. Cabeamento e Chicotes</h4>
+                        <p>Cabos de potência e sinal passam internamente por dutos no braço. Usam chicotes flexíveis de alta durabilidade. Nas vistas CAD, são mostrados como conjuntos de cabos com conectores modulares para fácil substituição. Alguns modelos KUKA possuem roteamento interno de ar e dados (Media Flange).</p>
+
+                        <h4>9. Efetuador Final (Ferramenta)</h4>
+                        <p>Ponto de fixação padrão ISO na flange do eixo 6. Pode ser trocado por:</p>
+                        <ul>
+                            <li><strong>Pinças</strong> pneumáticas,</li>
+                            <li><strong>Tochas</strong> de solda MIG/MAG,</li>
+                            <li><strong>Cabeçotes</strong> de pintura,</li>
+                            <li><strong>Ventosas</strong> de vácuo.</li>
+                        </ul>
+                        <p>Conectado a linhas de energia, ar e comunicação integradas.</p>
+
+                        <h4>10. Unidade de Controle (KUKA KRC)</h4>
+                        <p>Armário separado que controla todos os eixos. Contém:</p>
+                        <ul>
+                            <li><strong>Controlador industrial</strong> (CPU KRC).</li>
+                            <li><strong>Drives de potência</strong> dos servos.</li>
+                            <li><strong>Fonte de energia</strong> 400/480V AC.</li>
+                            <li><strong>Sistema de segurança</strong> e parada de emergência.</li>
+                            <li><strong>Interface de rede</strong> (EtherCAT, PROFINET, Ethernet/IP).</li>
+                            <li><strong>Comunicação</strong> com o robô via cabos DCC e RDC (dados e potência).</li>
+                        </ul>
+
+                        <h4>11. Programação e Comunicação</h4>
+                        <p><strong>Sistema operacional:</strong> KUKA System Software (KSS).</p>
+                        <p><strong>Linguagem:</strong> KRL (KUKA Robot Language).</p>
+                        <p><strong>Controle manual:</strong> via Teach Pendant (KUKA SmartPAD).</p>
+                        <p><strong>Integração:</strong> com sistemas CAD/CAM e simulação 3D (KUKA.Sim).</p>
+
+                        <h4>12. Estrutura</h4>
+                        <p>Um modelo completo de um robô KUKA apresenta:</p>
+                        <ul>
+                            <li><strong>Níveis hierárquicos:</strong> (montagem → submontagem → peças).</li>
+                            <li><strong>Padrão de nomenclatura:</strong>
+                                <ul>
+                                    <li><strong>Base:</strong> A1_Assembly</li>
+                                    <li><strong>Braço inferior:</strong> A2_Link</li>
+                                    <li><strong>Braço superior:</strong> A3_Link</li>
+                                    <li><strong>Punho:</strong> A4_A5_A6_Group</li>
+                                    <li><strong>Cabeamento:</strong> Cable_Set_X</li>
+                                </ul>
+                            </li>
+                            <li><strong>Cada componente com:</strong>
+                                <ul>
+                                    <li><strong>Material</strong> (aço, alumínio, polímero)</li>
+                                    <li><strong>Massa</strong></li>
+                                    <li><strong>Parafusos</strong> e fixações (M8, M10, etc.)</li>
+                                    <li><strong>Referências</strong> a catálogos KUKA originais.</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <h4>13. Manutenção e Diagnóstico</h4>
+                        <p><strong>Lubrificação</strong> periódica (a cada 10.000h).</p>
+                        <p><strong>Calibração</strong> automática via sensores absolutos.</p>
+                        <p><strong>Substituição modular:</strong> motores, redutores e cabos podem ser trocados sem desmontar todo o robô.</p>
+                        <p><strong>Softwares auxiliares:</strong> KUKA.WorkVisual e KUKA.Diagnosis para monitoramento de falhas.</p>
+                    `
+                },
+              
+                {
+                    title: "3º ⚡ Manual Técnico – Sistema Elétrico do Robô KUKA",
+                    showPdf: false,
+                    content: `
+                        <h4>1. Visão Geral do Sistema Elétrico</h4>
+                        <p>O sistema elétrico do robô KUKA é responsável por alimentar, controlar e proteger todos os motores, sensores e módulos eletrônicos. Ele é dividido em três partes principais:</p>
+                        <ul>
+                            <li><strong>Alimentação de energia</strong> (potência e controle)</li>
+                            <li><strong>Unidade de controle KRC</strong> (KUKA Robot Controller)</li>
+                            <li><strong>Cabeamento e módulos de campo</strong> (dentro do robô e periféricos externos)</li>
+                        </ul>
+                        <p>A tensão nominal varia conforme o modelo e o país, geralmente **trifásico 400 V AC** (50/60 Hz) com circuitos de controle em **24 V DC**.</p>
+
+                        <h4>2. Alimentação e Distribuição de Energia</h4>
+                        <p><strong>Entrada principal:</strong> 3 × 400 V AC (fase + neutro + terra)</p>
+                        <p><strong>Consumo médio:</strong> de 5 kW a 10 kW, dependendo do robô e carga</p>
+                        <p><strong>Disjuntores e fusíveis:</strong> protegem contra sobrecorrente e curto</p>
+                        <p><strong>Transformadores internos:</strong> reduzem a tensão para circuitos de 230 V AC e 24 V DC</p>
+                        <p><strong>Fonte de 24 V DC:</strong> alimenta sensores, controladores, ventiladores e iluminação do painel</p>
+                        <p><strong>Proteções principais:</strong></p>
+                        <ul>
+                            <li><strong>Relés térmicos</strong> e contatores de segurança</li>
+                            <li><strong>Proteção de surto</strong> (SPD)</li>
+                            <li><strong>Chave geral</strong> e parada de emergência (E-STOP)</li>
+                        </ul>
+
+                        <h4>3. Unidade de Controle – KUKA KRC</h4>
+                        <p>A KRC (KUKA Robot Controller) é o “cérebro” do sistema elétrico. Dentro dela ficam os módulos de potência, controle e comunicação.</p>
+                        <p><strong>Componentes internos:</strong></p>
+                        <ul>
+                            <li><strong>Fonte de alimentação</strong> principal (400 V AC)</li>
+                            <li><strong>Drives dos servomotores</strong> (KSD ou KPP/KSP): convertem tensão AC em DC e controlam cada eixo</li>
+                            <li><strong>Placa de controle central</strong> (CCU): faz o gerenciamento lógico e a comunicação entre todos os módulos</li>
+                            <li><strong>PLC interno</strong> (SoftPLC / KUKA.PLC): usado para controle lógico de entradas e saídas digitais</li>
+                            <li><strong>Ventilação e sensores</strong> térmicos: garantem refrigeração dos drives e da CPU</li>
+                        </ul>
+                        <p><strong>Sinais de interface:</strong></p>
+                        <ul>
+                            <li><strong>Entradas digitais</strong> (24 V DC)</li>
+                            <li><strong>Saídas digitais</strong> (24 V DC)</li>
+                            <li><strong>Entradas analógicas</strong> (0–10 V)</li>
+                            <li><strong>Conexões de rede</strong> industrial (EtherCAT, PROFINET, Ethernet/IP)</li>
+                        </ul>
+
+                        <h4>4. Servomotores e Encoders</h4>
+                        <p>Cada eixo do robô tem um servomotor AC trifásico brushless controlado individualmente.</p>
+                        <p><strong>Dados típicos:</strong></p>
+                        <ul>
+                            <li><strong>Tensão de alimentação:</strong> 400 V AC</li>
+                            <li><strong>Faixa de potência:</strong> 1 kW a 3 kW por eixo</li>
+                            <li><strong>Comunicação:</strong> cabo híbrido (energia + sinal do encoder)</li>
+                            <li><strong>Feedback:</strong> encoders absolutos com precisão de 0,01°</li>
+                        </ul>
+                        <p>Cada motor possui **freio eletromecânico de segurança** (24 V DC) acionado quando o robô está parado ou desligado.</p>
+
+                        <h4>5. Cabeamento Interno e Conectores</h4>
+                        <p>Os cabos de potência e sinal passam por dentro dos eixos do robô, protegidos por dutos e capas flexíveis.</p>
+                        <p><strong>Tipos de cabos:</strong></p>
+                        <ul>
+                            <li><strong>Cabo de potência</strong> do motor (trifásico blindado)</li>
+                            <li><strong>Cabo de feedback/encoder</strong> (sinal de baixa tensão)</li>
+                            <li><strong>Cabo de freio</strong> 24 V DC</li>
+                            <li><strong>Linhas de EtherCAT</strong> e PROFINET</li>
+                            <li><strong>Linhas de I/O</strong> para ferramentas externas (pinças, sensores etc.)</li>
+                        </ul>
+                        <p>Os conectores principais são de engate rápido industrial (Harting, LEMO ou Amphenol), permitindo substituição rápida sem desmontar o robô.</p>
+
+                        <h4>6. Módulos de Comunicação e I/O</h4>
+                        <p>O sistema elétrico do KUKA usa barramentos industriais modernos para interligar sensores e atuadores.</p>
+                        <p><strong>Principais módulos:</strong></p>
+                        <ul>
+                            <li><strong>EK1100</strong> (Beckhoff EtherCAT coupler): módulo mestre de rede</li>
+                            <li>**I/O Modules** (EL1809, EL2809, etc.): entradas e saídas digitais 24 V DC</li>
+                            <li><strong>Módulos analógicos</strong> (EL3162, EL4002): leitura e controle de sinais 0–10 V ou 4–20 mA</li>
+                            <li><strong>Relés de segurança</strong> (ESD/ESC): monitoram os circuitos de parada de emergência</li>
+                            <li><strong>Interface externa X11:</strong> conecta E-STOP, botões de reset e portas de segurança das células robotizadas</li>
+                        </ul>
+
+                        <h4>7. PLC e Controle Lógico</h4>
+                        <p>A KUKA integra um PLC interno (SoftPLC), mas também pode se comunicar com controladores externos (Siemens, Allen-Bradley, Beckhoff).</p>
+                        <p><strong>Funções típicas do PLC interno:</strong></p>
+                        <ul>
+                            <li><strong>Controle de atuadores</strong> pneumáticos e sensores</li>
+                            <li><strong>Intertravamento</strong> de segurança</li>
+                            <li><strong>Comunicação</strong> via PROFINET, EtherCAT ou Ethernet/IP</li>
+                            <li><strong>Troca de sinais</strong> com CLPs de células robotizadas</li>
+                        </ul>
+                        <p><strong>Faixa de operação lógica:</strong></p>
+                        <ul>
+                            <li><strong>Entrada digital:</strong> 24 V DC (corrente máx. 8 mA)</li>
+                            <li><strong>Saída digital:</strong> 24 V DC (corrente máx. 500 mA)</li>
+                        </ul>
+
+                        <h4>8. Sistema de Segurança</h4>
+                        <p><strong>Circuito de parada de emergência (E-STOP):</strong> atua sobre os drives de potência e o freio dos motores.</p>
+                        <p><strong>Relé de segurança KUKA ESC:</strong> supervisiona o estado de segurança e reinício controlado.</p>
+                        <p><strong>Zonas seguras:</strong> configuradas via software (SafeOperation) para limitar ângulos, velocidade e área de trabalho.</p>
+
+                        <h4>9. Interface Homem-Máquina (HMI)</h4>
+                        <p>O operador interage com o sistema elétrico por meio do **KUKA SmartPAD**, conectado à KRC.</p>
+                        <p><strong>Alimentação:</strong> 24 V DC</p>
+                        <p><strong>Comunicação:</strong> Ethernet industrial</p>
+                        <p><strong>Tela sensível ao toque</strong> com botões de habilitação (dead-man switch) e E-STOP dedicado</p>
+
+                        <h4>10. Tabela Resumo de Componentes Elétricos</h4>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full">
+                                <thead class="bg-gray-100">
+                                    <tr>
+                                        <th class="px-4 py-2 text-left">Componente</th>
+                                        <th class="px-4 py-2 text-left">Função</th>
+                                        <th class="px-4 py-2 text-left">Tensão / Tipo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td class="px-4 py-2"><strong>Fonte principal</strong></td><td class="px-4 py-2">Alimenta a unidade KRC</td><td class="px-4 py-2">3×400 V AC</td></tr>
+                                    <tr><td class="px-4 py-2"><strong>Drives KSD / KSP</strong></td><td class="px-4 py-2">Controle de motores</td><td class="px-4 py-2">400 V AC / DC link</td></tr>
+                                    <tr><td class="px-4 py-2"><strong>Servomotores</strong></td><td class="px-4 py-2">Movimento dos eixos</td><td class="px-4 py-2">400 V AC</td></tr>
+                                    <tr><td class="px-4 py-2"><strong>Freios de motor</strong></td><td class="px-4 py-2">Segurança de parada</td><td class="px-4 py-2">24 V DC</td></tr>
+                                    <tr><td class="px-4 py-2"><strong>Encoders</strong></td><td class="px-4 py-2">Leitura de posição</td><td class="px-4 py-2">Sinal digital</td></tr>
+                                    <tr><td class="px-4 py-2"><strong>Módulos I/O</strong></td><td class="px-4 py-2">Entradas e saídas de controle</td><td class="px-4 py-2">24 V DC</td></tr>
+                                    <tr><td class="px-4 py-2"><strong>PLC interno</strong></td><td class="px-4 py-2">Lógica de automação</td><td class="px-4 py-2">SoftPLC KUKA</td></tr>
+                                    <tr><td class="px-4 py-2"><strong>Interface X11</strong></td><td class="px-4 py-2">Segurança e E-STOP</td><td class="px-4 py-2">24 V DC</td></tr>
+                                    <tr><td class="px-4 py-2"><strong>SmartPAD</strong></td><td class="px-4 py-2">HMI de operação</td><td class="px-4 py-2">24 V DC</td></tr>
+                                    <tr><td class="px-4 py-2"><strong>Rede industrial</strong></td><td class="px-4 py-2">Comunicação</td><td class="px-4 py-2">EtherCAT / PROFINET</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h4>11. Manutenção Elétrica</h4>
+                        <ul>
+                            <li><strong>Verificar</strong> conexões e aterramento periodicamente</li>
+                            <li><strong>Limpar</strong> filtros e ventoinhas da KRC</li>
+                            <li><strong>Testar</strong> circuitos de segurança (E-STOP e ESC)</li>
+                            <li><strong>Medir tensões</strong> de 24 V DC e 400 V AC antes da energização</li>
+                            <li><strong>Atualizar</strong> o firmware dos módulos KRC conforme o plano de manutenção da KUKA</li>
+                        </ul>
+
+                        <h4>12. Observação Final</h4>
+                        <p>Todo o sistema elétrico da KUKA foi projetado com foco em **segurança**, **modularidade** e **diagnóstico rápido**. Graças à integração entre servomotores, drives inteligentes, PLC e barramento EtherCAT, o robô opera com alta precisão e confiabilidade em ambientes industriais de automação pesada.</p>
+                    `
+                },
+            
+                {
+                    title: "4º ⚙️ Tipos de Falhas (Geral)",
+                    showPdf: false,
+                    content: `
+                        <h4>⚙️ 1. Falhas Mecânicas</h4>
+                        <p>Essas são as mais comuns em robôs que trabalham o dia inteiro em linha de produção. Normalmente causam perda de precisão, ruído ou travamento de eixos.</p>
+                        <p><strong>Principais problemas:</strong></p>
+                        <ul>
+                            <li><strong>Desgaste</strong> de engrenagens e redutores (principalmente nos eixos 2 e 3)</li>
+                            <li><strong>Folga</strong> nos rolamentos ou juntas</li>
+                            <li><strong>Ruído anormal</strong> em motores por falta de lubrificação</li>
+                            <li><strong>Trava mecânica</strong> em eixos devido a sujeira, ferrugem ou desalinhamento</li>
+                            <li><strong>Quebra de cabos</strong> de potência internos nos eixos móveis</li>
+                            <li><strong>Fadiga nos cabos</strong> do chicote (dress pack) — principalmente o que liga o punho à ferramenta</li>
+                        </ul>
+                        <p><strong>Sintomas:</strong> movimentos trêmulos, perda de repetibilidade, barulho metálico, vibração anormal.</p>
+
+                        <h4>⚡ 2. Falhas Elétricas</h4>
+                        <p>Afetam o funcionamento geral ou causam paradas inesperadas.</p>
+                        <p><strong>Principais causas:</strong></p>
+                        <ul>
+                            <li><strong>Queda de tensão</strong> na alimentação trifásica</li>
+                            <li><strong>Conectores frouxos</strong> ou oxidados (muito comum em ambientes úmidos)</li>
+                            <li><strong>Curto-circuito</strong> em cabos de motor ou sensores</li>
+                            <li><strong>Falha em disjuntores</strong> internos da controladora (KRC, R-30i, DX200, etc.)</li>
+                            <li><strong>Problemas de aterramento</strong> causando ruído nos sinais de encoder</li>
+                            <li><strong>Falha no cabo de rede</strong> entre o robô e o PLC</li>
+                        </ul>
+                        <p><strong>Sintomas:</strong> desligamentos aleatórios, alarmes de “Power Supply Fault”, reset inesperado do controlador.</p>
+
+                        <h4>💡 3. Falhas Eletrônicas e de Sensores</h4>
+                        <p>Afetam a leitura de posição, velocidade e segurança.</p>
+                        <p><strong>Problemas comuns:</strong></p>
+                        <ul>
+                            <li><strong>Encoder com mau contato</strong> ou falha de leitura de posição</li>
+                            <li><strong>Sensor de limite de curso</strong> (limit switch) quebrado ou desalinhado</li>
+                            <li><strong>Falha no módulo de segurança</strong> (Safety Board / ESC)</li>
+                            <li><strong>Driver de servo</strong> queimado ou superaquecido</li>
+                            <li><strong>Falha de comunicação</strong> entre o servo e o controlador (Bus Error)</li>
+                            <li><strong>Sensor de ferramenta</strong> (TCP ou proximidade) sem resposta</li>
+                        </ul>
+                        <p><strong>Sintomas:</strong> erro de referência de eixo, mensagens como “Servo Drive Fault”, “Encoder not detected”, “Axis limit exceeded”.</p>
+
+                        <h4>💻 4. Falhas de Software e Programação</h4>
+                        <p>Podem ser causadas por erro humano, mau uso do SmartPAD, ou corrompimento de arquivos do sistema.</p>
+                        <p><strong>Principais erros:</strong></p>
+                        <ul>
+                            <li><strong>Programa KRL</strong> com sintaxe incorreta ou variável não declarada</li>
+                            <li><strong>Erro de trajetória</strong> (ponto fora do alcance)</li>
+                            <li><strong>Configuração incorreta</strong> de ferramenta ou base (TOOL/BASE)</li>
+                            <li><strong>Perda de dados</strong> do projeto após queda de energia</li>
+                            <li><strong>Sistema operacional KSS</strong> corrompido</li>
+                            <li><strong>Erro de comunicação</strong> com PLC (PROFINET, EtherCAT, etc.)</li>
+                            <li><strong>SmartPAD travando</strong> ou reiniciando por erro no HMI</li>
+                        </ul>
+                        <p><strong>Sintomas:</strong> mensagens como “Program aborted”, “Invalid motion command”, “File corrupted”, “Communication error with fieldbus”.</p>
+
+                        <h4>🔒 5. Falhas de Segurança e Intertravamento</h4>
+                        <p>Essas normalmente impedem o robô de iniciar movimentos até que a causa seja resolvida.</p>
+                        <p><strong>Principais causas:</strong></p>
+                        <ul>
+                            <li><strong>Botão de emergência (E-STOP)</strong> pressionado ou com defeito</li>
+                            <li><strong>Chave de porta</strong> da célula de segurança aberta</li>
+                            <li><strong>Erro no circuito</strong> de habilitação do Dead-Man Switch</li>
+                            <li><strong>Modo incorreto</strong> de operação (T1, T2, AUT, EXT)</li>
+                            <li><strong>Falha no módulo de segurança</strong> (Safe Operation)</li>
+                            <li><strong>Zona de segurança</strong> violada (Safety Fence ou Light Curtain)</li>
+                        </ul>
+                        <p><strong>Sintomas:</strong> o robô não sai do estado “STOP” e exibe mensagens como “Safety Circuit open” ou “Operator safety circuit interrupted”.</p>
+
+                        <h4>🌡️ 6. Falhas Térmicas e Ambientais</h4>
+                        <p>Ocorrem por calor, poeira, vibração excessiva ou umidade.</p>
+                        <p><strong>Exemplos:</strong></p>
+                        <ul>
+                            <li><strong>Superaquecimento</strong> de servos ou da fonte da KRC</li>
+                            <li><strong>Ventoinhas paradas</strong> por sujeira ou desgaste</li>
+                            <li><strong>Condensação de umidade</strong> dentro do painel</li>
+                            <li><strong>Acúmulo de pó metálico</strong> nos conectores</li>
+                            <li><strong>Temperatura ambiente</strong> acima de 45 °C</li>
+                            <li><strong>Falta de ventilação</strong> adequada na célula robotizada</li>
+                        </ul>
+                        <p><strong>Sintomas:</strong> alarmes de temperatura alta, queda de performance, paradas por segurança.</p>
+
+                        <h4>🔁 7. Falhas de Comunicação e Rede</h4>
+                        <p>Muito comuns quando o robô é integrado com CLPs, sensores inteligentes e sistemas MES.</p>
+                        <p><strong>Causas comuns:</strong></p>
+                        <ul>
+                            <li><strong>Cabo de rede</strong> desconectado ou rompido</li>
+                            <li><strong>Configuração incorreta de IP</strong> no robô ou PLC</li>
+                            <li><strong>Versão incompatível</strong> do protocolo (ex: PROFINET vs EtherCAT)</li>
+                            <li><strong>Falha em switch</strong> industrial ou módulo de campo</li>
+                            <li><strong>Latência alta</strong> em rede compartilhada</li>
+                        </ul>
+                        <p><strong>Sintomas:</strong> perda de sinal entre dispositivos, erro “Fieldbus Offline”, comandos lentos ou atrasados.</p>
+
+                        <h4>🧰 8. Falhas de Ferramenta (EOAT – End of Arm Tooling)</h4>
+                        <p>Ocorrem na extremidade do robô, onde ficam ferramentas como garras, ventosas, soldadores, etc.</p>
+                        <p><strong>Problemas típicos:</strong></p>
+                        <ul>
+                            <li><strong>Vazamento de ar</strong> em atuadores pneumáticos</li>
+                            <li><strong>Válvula solenoide</strong> travada</li>
+                            <li><strong>Sensor de fim de curso</strong> da garra com defeito</li>
+                            <li><strong>Falha de alimentação</strong> da ferramenta (12V / 24V DC)</li>
+                            <li><strong>Desalinhamento</strong> após colisão ou impacto</li>
+                        </ul>
+                        <p><strong>Sintomas:</strong> garra não fecha/abre, perda de precisão, alarmes de “Tool Error”.</p>
+
+                        <h4>🧩 9. Falhas de Calibração e Referência</h4>
+                        <ul>
+                            <li><strong>Perda da referência</strong> de eixo após troca de peça ou encoder</li>
+                            <li><strong>Erro no ajuste do TCP</strong> (ponto da ferramenta)</li>
+                            <li><strong>Robô saindo da posição</strong> inicial incorretamente</li>
+                            <li><strong>Falha ao sincronizar</strong> eixos após manutenção</li>
+                        </ul>
+                        <p><strong>Soluções:</strong> recalibrar encoders, refazer “Mastering” dos eixos, verificar TOOL/BASE no SmartPAD.</p>
+
+                        <h4>🧠 10. Falhas Humanas / Operacionais</h4>
+                        <ul>
+                            <li><strong>Troca de modo incorreta</strong> (ex: AUT → T1 durante operação)</li>
+                            <li><strong>Falta de bloqueio elétrico</strong> antes de manutenção</li>
+                            <li><strong>Upload de programa</strong> errado para o robô</li>
+                            <li><strong>Uso indevido</strong> do E-STOP</li>
+                            <li><strong>Falta de treinamento</strong> do operador</li>
+                        </ul>
+                    `
+                },
+             
+                {
+                    title: "5º ⚙️ Top 20 Falhas e Correções Rápidas",
+                    showPdf: false,
+                    content: `
+                        <ol>
+                            <li><strong>⚙️ 1. Folga mecânica nos eixos:</strong><br><strong>Causa:</strong> desgaste de engrenagens ou rolamentos.<br><strong>Correção:</strong> ajustar ou substituir redutores e rolamentos.</li>
+                            <li><strong>⚡ 2. Queda de tensão na alimentação:</strong><br><strong>Causa:</strong> instabilidade na rede elétrica.<br><strong>Correção:</strong> verificar disjuntores, cabos e estabilizar a tensão.</li>
+                            <li><strong>🔩 3. Cabos rompidos no braço:</strong><br><strong>Causa:</strong> dobra excessiva e uso contínuo.<br><strong>Correção:</strong> substituir chicote (dress pack) e revisar fixações.</li>
+                            <li><strong>🔧 4. Encoder com falha:</strong><br><strong>Causa:</strong> sujeira ou mau contato no conector.<br><strong>Correção:</strong> limpar, reconectar ou trocar o sensor.</li>
+                            <li><strong>🔥 5. Superaquecimento dos servos:</strong><br><strong>Causa:</strong> ventilação insuficiente ou sobrecarga.<br><strong>Correção:</strong> limpar filtros e verificar temperatura ambiente.</li>
+                            <li><strong>💡 6. Falha no drive do motor:</strong><br><strong>Causa:</strong> componente eletrônico queimado.<br><strong>Correção:</strong> substituir o módulo de servo defeituoso.</li>
+                            <li><strong>💻 7. Erro de comunicação com PLC:</strong><br><strong>Causa:</strong> cabo de rede solto ou IP incorreto.<br><strong>Correção:</strong> revisar conexões e configurar rede.</li>
+                            <li><strong>🧠 8. Programa corrompido:</strong><br><strong>Causa:</strong> desligamento brusco ou erro de gravação.<br><strong>Correção:</strong> restaurar backup do projeto.</li>
+                            <li><strong>🔒 9. E-STOP acionado ou com defeito:</strong><br><strong>Causa:</strong> botão pressionado ou mau contato.<br><strong>Correção:</strong> soltar botão e testar o circuito de emergência.</li>
+                            <li><strong>⚙️ 10. Falha no “Dead-Man Switch”:</strong><br><strong>Causa:</strong> desgaste no botão de habilitação do SmartPAD.<br><strong>Correção:</strong> substituir o conjunto do botão.</li>
+                            <li><strong>🪛 11. Desalinhamento do robô:</strong><br><strong>Causa:</strong> colisão ou montagem incorreta.<br><strong>Correção:</strong> refazer o “Mastering” dos eixos.</li>
+                            <li><strong>🧩 12. Ferramenta (EOAT) com defeito:</strong><br><strong>Causa:</strong> vazamento de ar ou atuador travado.<br><strong>Correção:</strong> revisar válvulas e conexões pneumáticas.</li>
+                            <li><strong>⚡ 13. Falha no módulo de segurança:</strong><br><strong>Causa:</strong> circuito aberto ou erro de configuração.<br><strong>Correção:</strong> verificar “Safety Board” e cabos de intertravamento.</li>
+                            <li><strong>💾 14. Erro no software KUKA HMI:</strong><br><strong>Causa:</strong> travamento do SmartPAD.<br><strong>Correção:</strong> reiniciar HMI ou atualizar o sistema.</li>
+                            <li><strong>🔋 15. Fonte de alimentação defeituosa:</strong><br><strong>Causa:</strong> falha interna por sobrecarga.<br><strong>Correção:</strong> substituir a fonte de 24 V DC.</li>
+                            <li><strong>🌡️ 16. Temperatura interna alta na controladora:</strong><br><strong>Causa:</strong> ventoinhas paradas ou poeira acumulada.<br><strong>Correção:</strong> limpar filtros e substituir ventoinhas.</li>
+                            <li><strong>🔌 17. Conector solto em módulo I/O:</strong><br><strong>Causa:</strong> vibração ou mau travamento.<br><strong>Correção:</strong> recolocar e travar o conector corretamente.</li>
+                            <li><strong>🧠 18. Erro de programação (KRL):</strong><br><strong>Causa:</strong> comando inválido ou variável não declarada.<br><strong>Correção:</strong> revisar código e testar em modo T1.</li>
+                            <li><strong>🧱 19. Falha de campo de segurança (cerca ou sensor):</strong><br><strong>Causa:</strong> porta aberta ou sensor defeituoso.<br><strong>Correção:</strong> verificar travas e sensores de porta.</li>
+                            <li><strong>🔄 20. Perda de calibração após manutenção:</strong><br><strong>Causa:</strong> troca de encoder ou eixo sem remasterizar.<br><strong>Correção:</strong> executar novamente o “Mastering”.</li>
+                        </ol>
+                    `
+                },
+           
+                {
+                    title: "6º ⚙️ Principais Falhas e Correções em Robôs Industriais",
+                    showPdf: false,
+                    content: `
+                        <ol>
+                            <li><strong>1. Perda de referência (Mastering perdido)</strong><br><strong>Quando ocorre:</strong> após queda de energia, parada brusca ou troca de encoder.<br><strong>Causa:</strong> o sistema perde a posição absoluta dos eixos.<br><strong>Correção:</strong> refazer o Mastering com ferramenta de calibração (Dial Master ou EMT).</li>
+                            <li><strong>2. Falha de sincronismo entre eixos</strong><br><strong>Quando ocorre:</strong> após religar o robô ou após “Change Over” de tensão.<br><strong>Causa:</strong> diferença entre posição real e posição salva na controladora.<br><strong>Correção:</strong> executar sincronização de eixos no menu “Setup → Master/Calibrate”.</li>
+                            <li><strong>3. Queda de tensão na alimentação</strong><br><strong>Quando ocorre:</strong> durante picos de energia ou religamento da rede.<br><strong>Causa:</strong> queda na linha trifásica ou falha no disjuntor principal.<br><strong>Correção:</strong> estabilizar rede, revisar cabos e disjuntores, usar nobreak industrial.</li>
+                            <li><strong>4. Folga mecânica em eixos</strong><br><strong>Quando ocorre:</strong> após longos períodos de operação.<br><strong>Causa:</strong> desgaste de rolamentos ou redutores.<br><strong>Correção:</strong> substituir peças desgastadas e reapertar acoplamentos.</li>
+                            <li><strong>5. Cabos rompidos ou com mau contato</strong><br><strong>Quando ocorre:</strong> em robôs com chicote (dress pack) antigo.<br><strong>Causa:</strong> dobra repetitiva ou vibração.<br><strong>Correção:</strong> trocar o chicote e fixar corretamente o conjunto de cabos.</li>
+                            <li><strong>6. Encoder com defeito</strong><br><strong>Quando ocorre:</strong> logo após religar o robô ou após vibração intensa.<br><strong>Causa:</strong> falha no sensor de posição ou mau contato no conector.<br><strong>Correção:</strong> reconectar, limpar ou substituir o encoder.</li>
+                            <li><strong>7. Drive de servo em falha</strong><br><strong>Quando ocorre:</strong> ao iniciar o sistema ou durante movimento rápido.<br><strong>Causa:</strong> sobrecorrente, superaquecimento ou defeito interno.<br><strong>Correção:</strong> verificar ventilação, tensão e substituir o drive se necessário.</li>
+                            <li><strong>8. Programa corrompido</strong><br><strong>Quando ocorre:</strong> após desligamento inesperado.<br><strong>Causa:</strong> erro de gravação na memória.<br><strong>Correção:</strong> restaurar backup do projeto via USB.</li>
+                            <li><strong>9. Falha de comunicação com PLC</strong><br><strong>Quando ocorre:</strong> na inicialização ou após atualização de rede.<br><strong>Causa:</strong> IP incorreto, cabo solto ou módulo de rede travado.<br><strong>Correção:</strong> revisar endereços, reconectar e reiniciar comunicação PROFINET/EtherCAT.</li>
+                            <li><strong>10. E-STOP pressionado</strong><br><strong>Quando ocorre:</strong> após parada de emergência ou falha no botão.<br><strong>Causa:</strong> circuito de segurança aberto.<br><strong>Correção:</strong> liberar o botão, testar o circuito e resetar a falha.</li>
+                            <li><strong>11. Dead-Man Switch defeituoso</strong><br><strong>Quando ocorre:</strong> ao tentar movimentar o robô manualmente.<br><strong>Causa:</strong> desgaste do botão de habilitação.<br><strong>Correção:</strong> substituir o conjunto do botão no SmartPAD.</li>
+                            <li><strong>12. Desalinhamento da ferramenta</strong><br><strong>Quando ocorre:</strong> após colisão ou impacto.<br><strong>Causa:</strong> alteração no TCP (Tool Center Point).<br><strong>Correção:</strong> refazer o ensino do TCP e recalibrar a base.</li>
+                            <li><strong>13. Ferramenta (EOAT) sem resposta</strong><br><strong>Quando ocorre:</strong> durante operação pneumática.<br><strong>Causa:</strong> válvula solenoide travada ou vazamento de ar.<br><strong>Correção:</strong> revisar válvulas, mangueiras e conexões.</li>
+                            <li><strong>14. Módulo de segurança com erro</strong><br><strong>Quando ocorre:</strong> ao ligar o sistema ou após reset de energia.<br><strong>Causa:</strong> falha na placa ESC ou cabo de intertravamento.<br><strong>Correção:</strong> testar circuito de segurança e resetar o módulo.</li>
+                            <li><strong>15. Superaquecimento</strong><br><strong>Quando ocorre:</strong> em operação contínua ou ambiente quente.<br><strong>Causa:</strong> ventilação bloqueada ou fan parado.<br><strong>Correção:</strong> limpar filtros e verificar ventoinhas.</li>
+                            <li><strong>16. Fonte de 24V DC falhando</strong><br><strong>Quando ocorre:</strong> ao energizar o sistema.<br><strong>Causa:</strong> sobrecarga ou capacitor danificado.<br><strong>Correção:</strong> substituir a fonte de alimentação.</li>
+                            <li><strong>17. SmartPAD travando</strong><br><strong>Quando ocorre:</strong> durante operação longa ou após erro de software.<br><strong>Causa:</strong> falha no KUKA HMI.<br><strong>Correção:</strong> reiniciar o SmartPAD e atualizar firmware.</li>
+                            <li><strong>18. Erro de campo de segurança</strong><br><strong>Quando ocorre:</strong> porta da célula aberta ou sensor com falha.<br><strong>Causa:</strong> violação de zona segura.<br><strong>Correção:</strong> verificar sensores, portas e resetar o circuito.</li>
+                            <li><strong>19. Falha após “Change Over” (troca de rede ou tensão)</strong><br><strong>Quando ocorre:</strong> após religar a controladora.<br><strong>Causa:</strong> tensão fora do padrão ou inicialização incompleta.<br><strong>Correção:</strong> verificar fases, neutro e aterramento antes da energização.</li>
+                            <li><strong>20. Perda de calibração total</strong><br><strong>Quando ocorre:</strong> após troca de bateria da controladora.<br><strong>Causa:</strong> memória volátil apagada.<br><strong>Correção:</strong> refazer calibração completa e restaurar parâmetros de fábrica.</li>
+                        </ol>
+                    `
+                },
+             
+                {
+                    title: "7º Tipos de Tintas e Revestimentos (Pintura)",
+                    showPdf: false,
+                    content: `
+                        <ol>
+                            <li><strong>1. Pintura Eletroforética (KTL ou E-coat)</strong><br><strong>Revestimento anticorrosivo</strong> aplicado por imersão e corrente elétrica.<br>Forma a primeira camada protetora sobre a carroceria metálica.</li>
+                            <li><strong>2. Primer Epóxi</strong><br><strong>Camada intermediária</strong> que garante aderência entre o KTL e a tinta de base.<br>Ajuda na uniformização da superfície e resistência química.</li>
+                            <li><strong>3. Pintura Basecoat (Tinta de Cor)</strong><br><strong>Camada de cor</strong> principal do veículo.<br>Pode ser sólida, metálica ou perolizada, conforme o tom desejado.</li>
+                            <li><strong>4. Pintura Metálica</strong><br>Contém **partículas de alumínio** que dão brilho e profundidade à cor.<br>Muito usada em veículos de linha premium.</li>
+                            <li><strong>5. Pintura Perolizada (Mica)</strong><br>Usa **pigmentos de mica** ou cerâmica que refletem luz e criam efeito iridescente.<br>Mais cara e aplicada em múltiplas camadas.</li>
+                            <li><strong>6. Verniz PU (Poliuretano)</strong><br><strong>Camada transparente</strong> final que protege a cor contra UV, riscos e agentes químicos.<br>Dá brilho e durabilidade ao acabamento.</li>
+                            <li><strong>7. Pintura Sólida</strong><br>Tinta **sem partículas metálicas** ou peroladas.<br>Mais simples e com custo menor, usada em tons básicos (branco, preto, vermelho).</li>
+                            <li><strong>8. Pintura Bicomponente (2K)</strong><br>Mistura **tinta e catalisador** antes da aplicação.<br>Secagem mais rápida e alta resistência.</li>
+                            <li><strong>9. Pintura à Base de Água (Base Waterborne)</strong><br>Usa **solvente aquoso** no lugar do orgânico.<br>Mais ecológica e comum em linhas modernas como Peugeot 208 e Citroën C4.</li>
+                            <li><strong>10. Pintura em Pó (Powder Coating)</strong><br>Usada em **componentes metálicos** (rodas, chassis).<br>Aplicada por carga eletrostática e curada em estufa.</li>
+                            <li><strong>11. Revestimento Antichip (Stone Guard)</strong><br><strong>Camada protetora</strong> na parte inferior da carroceria contra impacto de pedras.<br>Aplicada antes do primer ou junto à vedação.</li>
+                            <li><strong>12. Vedação (Sealing)</strong><br>Produto aplicado nas **junções e soldas** para evitar infiltração e ferrugem.<br>Usado nas portas, capô, assoalho e colunas.</li>
+                            <li><strong>13. Pintura Robotizada</strong><br>Feita por **braços robóticos** com controle de espessura e temperatura.<br>Garante repetição e qualidade uniforme nas carrocerias.</li>
+                            <li><strong>14. Pintura Retrabalho (Spot Repair)</strong><br>Correção **localizada de defeitos** de pintura antes da inspeção final.<br>Usa pistolas manuais e cura rápida por infravermelho.</li>
+                            <li><strong>15. Pintura Verniz Fosco (Clear Matte)</strong><br>Acabamento com **brilho reduzido**.<br>Usado em versões especiais e esportivas (ex: Peugeot GT Line).</li>
+                        </ol>
+                    `
+                },
+           
+                {
+                    title: "8º Defeitos Comuns na Pintura Automotiva",
+                    showPdf: false,
+                    content: `
+                        <ol>
+                            <li><strong>1. Casca de Laranja:</strong><br><strong>Causa:</strong> Viscosidade alta da tinta ou pressão incorreta na pistola.<br><strong>Correção:</strong> Ajustar diluição, pressão e temperatura de aplicação.</li>
+                            <li><strong>2. Bolhas (Blistering):</strong><br><strong>Causa:</strong> Umidade, sujeira ou contaminação na superfície.<br><strong>Correção:</strong> Lixar e repintar após limpeza e desumidificação.</li>
+                            <li><strong>3. Escorrimento (Sagging):</strong><br><strong>Causa:</strong> Excesso de tinta ou distância errada da pistola.<br><strong>Correção:</strong> Lixar a área afetada e reaplicar a camada corretamente.</li>
+                            <li><strong>4. Falha de Aderência (Peeling):</strong><br><strong>Causa:</strong> Falta de preparo ou incompatibilidade entre camadas.<br><strong>Correção:</strong> Remover tinta solta, aplicar primer e refazer a pintura.</li>
+                            <li><strong>5. Manchas de Água (Water Spot):</strong><br><strong>Causa:</strong> Gotas de água antes da secagem completa.<br><strong>Correção:</strong> Polimento leve ou repintura parcial.</li>
+                            <li><strong>6. Empolamento (Solvent Pop):</strong><br><strong>Causa:</strong> Evaporação rápida do solvente ou cura incorreta.<br><strong>Correção:</strong> Lixar, aplicar nova demão com cura controlada.</li>
+                            <li><strong>7. Diferença de Tonalidade:</strong><br><strong>Causa:</strong> Erro na mistura ou variação de espessura.<br><strong>Correção:</strong> Padronizar mistura e reaplicar uniformemente.</li>
+                            <li><strong>8. Pontos de Poeira (Dust Nib):</strong><br><strong>Causa:</strong> Ambiente sujo ou falha de filtragem.<br><strong>Correção:</strong> Lixar, polir ou repintar após limpeza da cabine.</li>
+                            <li><strong>9. Fervura (Boiling):</strong><br><strong>Causa:</strong> Calor excessivo na estufa ou cura rápida demais.<br><strong>Correção:</strong> Ajustar temperatura e tempo de cura.</li>
+                            <li><strong>10. Microfissuras (Cracking):</strong><br><strong>Causa:</strong> Espessura excessiva ou tinta velha.<br><strong>Correção:</strong> Remover camada afetada e repintar.</li>
+                            <li><strong>11. Contaminação de Silicone (Fish Eye):</strong><br><strong>Causa:</strong> Óleo, graxa ou silicone na superfície.<br><strong>Correção:</strong> Limpeza total e uso de aditivo anti-silicone.</li>
+                            <li><strong>12. Mancha de Sombra (Shadowing):</strong><br><strong>Causa:</strong> Falha na aplicação do primer ou cobertura desigual.<br><strong>Correção:</strong> Lixar e reaplicar a camada base.</li>
+                            <li><strong>13. Falha de Brilho (Dullness):</strong><br><strong>Causa:</strong> Verniz queimado, polimento incorreto ou mistura errada.<br><strong>Correção:</strong> Polimento técnico ou nova camada de verniz.</li>
+                            <li><strong>14. Inclusão Metálica (Metal Chip):</strong><br><strong>Causa:</strong> Poeira metálica ou ferrugem na linha.<br><strong>Correção:</strong> Lixar, limpar e repintar com controle de partículas.</li>
+                            <li><strong>15. Pulverização Seca (Dry Spray):</strong><br><strong>Causa:</strong> Distância excessiva da pistola ou baixa umidade.<br><strong>Correção:</strong> Lixar e reaplicar tinta com ajuste de pressão.</li>
+                        </ol>
+                    `
+                },
+              
+                {
+                    title: "9º Defeitos e Falhas em Robôs de Pintura",
+                    showPdf: false,
+                    content: `
+                        <ol>
+                            <li><strong>1. Perda de Sincronismo:</strong><br><strong>Causa:</strong> Queda de tensão ou erro de referência no encoder.<br><strong>Correção:</strong> Recalibrar e sincronizar eixos no software KUKA.</li>
+                            <li><strong>2. Falha no Atomizador (Campana):</strong><br><strong>Causa:</strong> Entupimento de bico ou falha de ar/alta tensão.<br><strong>Correção:</strong> Limpeza do bico, verificação de linha de ar e cabo HV.</li>
+                            <li><strong>3. Irregularidade no Jato de Tinta:</strong><br><strong>Causa:</strong> Pressão baixa, filtro entupido ou tinta mal misturada.<br><strong>Correção:</strong> Limpar filtro e pistola, revisar bomba e misturador.</li>
+                            <li><strong>4. Vazamento na Linha de Tinta:</strong><br><strong>Causa:</strong> Vedações gastas ou conexões frouxas.<br><strong>Correção:</strong> Substituir anéis de vedação e reapertar conexões.</li>
+                            <li><strong>5. Parada Inesperada do Robô:</strong><br><strong>Causa:</strong> Falha no CLP, falta de ar ou bloqueio de segurança.<br><strong>Correção:</strong> Verificar sensores de segurança, pressão e resetar controlador.</li>
+                            <li><strong>6. Movimentos Irregulares ou Tremores:</strong><br><strong>Causa:</strong> Servo mal calibrado ou encoder sujo.<br><strong>Correção:</strong> Realizar calibração de servo e limpeza dos sensores.</li>
+                            <li><strong>7. Falha de Comunicação com CLP ou HMI:</strong><br><strong>Causa:</strong> Perda de rede ou erro no barramento (Ethernet/EtherCAT).<br><strong>Correção:</strong> Verificar cabos, IP e reiniciar módulo de rede.</li>
+                            <li><strong>8. Pintura Fora do Alvo (Offset incorreto):</strong><br><strong>Causa:</strong> Programação incorreta ou deslocamento mecânico.<br><strong>Correção:</strong> Reajustar pontos de trajetória e recalibrar TCP.</li>
+                            <li><strong>9. Desgaste de Mangueiras e Cabos:</strong><br><strong>Causa:</strong> Fricção excessiva em ciclos repetitivos.<br><strong>Correção:</strong> Trocar mangueiras e aplicar proteção flexível.</li>
+                            <li><strong>10. Falha no Sistema de Purga:</strong><br><strong>Causa:</strong> Válvulas travadas ou temporização incorreta.<br><strong>Correção:</strong> Revisar válvulas e ajustar tempo de purga no programa.</li>
+                            <li><strong>11. Erro no Sistema de Ionização ou Terra:</strong><br><strong>Causa:</strong> Falta de aterramento ou ionizador inoperante.<br><strong>Correção:</strong> Testar aterramento e substituir gerador de íons.</li>
+                            <li><strong>12. Contaminação na Pistola:</strong><br><strong>Causa:</strong> Falha na limpeza automática.<br><strong>Correção:</strong> Executar ciclo manual de limpeza e verificar solvente.</li>
+                            <li><strong>13. Falha de Temperatura ou Umidade na Cabine:</strong><br><strong>Causa:</strong> Sistema de ar-condicionado ou controle ambiental fora do ideal.<br><strong>Correção:</strong> Ajustar climatização e sensores de ambiente.</li>
+                            <li><strong>14. Travamento de Eixo:</strong><br><strong>Causa:</strong> Excesso de tinta ou sujeira em componentes móveis.<br><strong>Correção:</strong> Limpeza mecânica e lubrificação.</li>
+                            <li><strong>15. Falha Após “Change Over” (Troca de Tinta):</strong><br><strong>Causa:</strong> Ar no sistema ou válvulas travadas.<br><strong>Correção:</strong> Purgar linhas e validar sequência de troca.</li>
+                        </ol>
+                    `
+                },
+            
+                {
+                    title: "10º 🧠 Plano de Manutenção Preventiva e Preditiva",
+                    showPdf: false,
+                    content: `
+                        <h4>🎯 Objetivo</h4>
+                        <p>Garantir operação contínua dos robôs de pintura, evitando falhas repentinas, reduzindo custos de parada e aumentando a confiabilidade do sistema.</p>
+
+                        <h4>🧩 1. Estratégia de Manutenção</h4>
+                        <p><strong>Preventiva:</strong> manutenção programada em intervalos fixos (horas de operação, ciclos ou calendário).</p>
+                        <p><strong>Preditiva:</strong> monitoramento em tempo real de desempenho, vibração, temperatura e consumo, prevendo falhas antes que ocorram.</p>
+
+                        <h4>⚙️ 2. Itens de Monitoramento Preditivo</h4>
+                        <div class="overflow-x-auto">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Componente</th>
+                                        <th>Parâmetro Monitorado</th>
+                                        <th>Método / Ferramenta</th>
+                                        <th>Frequência</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Servomotores</strong></td>
+                                        <td>Temperatura / Vibração / Corrente</td>
+                                        <td>Sensor de vibração + software KUKA Condition Monitoring</td>
+                                        <td>Contínua</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Redutores</strong></td>
+                                        <td>Nível de ruído e temperatura</td>
+                                        <td>Sensor acústico + termografia</td>
+                                        <td>Semanal</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Cabos e mangueiras</strong></td>
+                                        <td>Desgaste e flexão</td>
+                                        <td>Inspeção visual + sensor de ruptura</td>
+                                        <td>Diário</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Pistola de pintura / atomizador</strong></td>
+                                        <td>Vazão, pressão e uniformidade do jato</td>
+                                        <td>Sensor de fluxo + câmera de inspeção</td>
+                                        <td>Contínua</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>CLP e módulos I/O</strong></td>
+                                        <td>Comunicação e tempo de resposta</td>
+                                        <td>Log de diagnóstico (PLC/PC KUKA)</td>
+                                        <td>Contínua</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Filtros de ar / solvente</strong></td>
+                                        <td>Pressão diferencial</td>
+                                        <td>Sensor de pressão</td>
+                                        <td>Semanal</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Sistema de aterramento</strong></td>
+                                        <td>Resistência e integridade</td>
+                                        <td>Teste elétrico</td>
+                                        <td>Mensal</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h4>🧰 3. Rotina de Manutenção Preventiva</h4>
+                        <div class="overflow-x-auto">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Frequência</th>
+                                        <th>Ação Preventiva</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Diária</strong></td>
+                                        <td>Verificar cabos, mangueiras e conectores; checar pressão de ar e tinta; limpeza externa do robô e pistola.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Semanal</strong></td>
+                                        <td>Lubrificar eixos e juntas; testar ciclo de purga e atomizador; revisar temperatura e ruído dos servos.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Mensal</strong></td>
+                                        <td>Calibração dos encoders; backup de programas; inspeção elétrica completa e limpeza do painel de controle.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Trimestral</strong></td>
+                                        <td>Verificação do sistema de ventilação da cabine; atualização de firmware; revisão dos parâmetros de pressão e fluxo.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Semestral</strong></td>
+                                        <td>Troca preventiva de vedações e filtros; revisão de redutores e sensores de posição.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Anual</strong></td>
+                                        <td>Revisão completa do robô, substituição de componentes críticos, limpeza interna e calibração geral com relatório técnico.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h4>🧾 4. Ferramentas de Diagnóstico</h4>
+                        <ul>
+                            <li><strong>KUKA Condition Monitoring System (KCM):</strong> monitora vibração, torque e sobrecarga de eixo.</li>
+                            <li><strong>ThermoCam / Termografia:</strong> identifica aquecimento anormal em servos e redutores.</li>
+                            <li><strong>Analisador de rede e tensão:</strong> detecta quedas de energia e harmônicos.</li>
+                            <li><strong>Software SCADA / MES:</strong> registra tempo de ciclo, alarmes e desempenho em tempo real.</li>
+                        </ul>
+
+                        <h4>🕓 5. Plano de Paradas Programadas</h4>
+                        <ul>
+                            <li><strong>Parada leve (diária):</strong> 5–10 min no fim do turno para limpeza e checagem visual.</li>
+                            <li><strong>Parada média (mensal):</strong> 2–4 h para manutenção preventiva completa.</li>
+                            <li><strong>Parada total (anual):</strong> 1–2 dias para desmontagem, revisão e calibração total.</li>
+                        </ul>
+
+                        <h4>🔍 6. Ações de Melhoria Contínua</h4>
+                        <ul>
+                            <li><strong>Registrar</strong> todas as falhas e alarmes no histórico do robô (KUKA LogViewer).</li>
+                            <li><strong>Criar banco de dados</strong> com causas e tempos de correção.</li>
+                            <li><strong>Implementar sensores IoT</strong> (vibração, temperatura e corrente) para alertas antecipados.</li>
+                            <li><strong>Treinar equipe</strong> de manutenção e operação em diagnósticos preditivos.</li>
+                        </ul>
+
+                        <h4>🧡 7. Meta do Plano</h4>
+                        <ul>
+                            <li><strong>Zero quebras</strong> repentinas.</li>
+                            <li><strong>Disponibilidade</strong> acima de 98%.</li>
+                            <li><strong>Custo de manutenção</strong> 20% menor.</li>
+                            <li><strong>100% das paradas</strong> sob controle programado.</li>
+                        </ul>
+                    `
+                },
+            
+                {
+                    title: "🧰 Ferramenta de Análise 6W2H",
+                    showPdf: true,
+                    pdfFile: "6W2H.pdf", 
+                    content: `
+                 <p>O <strong>6W2H</strong> é uma ferramenta que organiza e estrutura a análise de problemas e planos de ação, tornando o processo mais claro, objetivo e eficaz.</p>
+
+                        
+                        <div class="w-full h-96 border rounded-lg mt-4 bg-gray-200 flex items-center justify-center">
+                            <iframe src="6W2H.pdf" class="w-full h-full" title="Visualizador de PDF 6W2H">
+                                <p class="text-gray-700">Seu navegador não suporta a visualização de PDFs. Por favor, use o botão de download.</p>
+                            </iframe>
+                        </div>
+                    `
+                },
+
+            
+                {
+                    title: "📈 Melhorias Aplicadas",
+                    showPdf: true,
+                    pdfFile: "Melhoria Digital.pdf", 
+                    content: `
+                  <p>Desenvolvi um Hub Centralizado e um Dashboard com o propósito de controlar e monitorar equipamentos e ativos. Meu foco foi criar ferramentas de acompanhamento e controle que permitem tomar decisões rápidas.</p>
+                  <p>Com esse dashboard, é possível identificar os principais pontos de manutenção e consumo, medir o custo real de cada reparo, monitorar o consumo e o controle de ativos, além de priorizar ações de manutenção para reduzir falhas e custos operacionais de forma estratégica. Essa é a minha solução para otimizar a eficiência da linha de produção e o controle de ativos da área.</p>
+                        
+                        <div class="w-full h-96 border rounded-lg mt-4 bg-gray-200 flex items-center justify-center">
+                            <iframe src="Melhoria Digital.pdf" class="w-full h-full" title="Visualizador de PDF Melhoria Digital">
+                                <p class="text-gray-700">Seu navegador não suporta a visualização de PDFs. Por favor, use o botão de download.</p>
+                            </iframe>
+                        </div>
+                    `
+                }
+
+            ];
+
+            
+            const modal = document.getElementById('modal');
+            const modalOverlay = document.getElementById('modal-overlay');
+            const modalContent = document.getElementById('modal-content');
+            const modalTitle = document.getElementById('modal-title');
+            const modalBody = document.getElementById('modal-body');
+            const modalCloseX = document.getElementById('modal-close-x');
+            const modalCloseBtn = document.getElementById('modal-close-btn');
+            const pdfDownloadBtn = document.getElementById('pdf-download');
+            const menuButtons = document.querySelectorAll('.menu-button');
+
+           
+
+            function openModal(index) {
+                const data = modalData[index];
+                if (!data) return;
+
+               
+                modalTitle.textContent = data.title;
+                modalBody.innerHTML = data.content;
+
+              
+                if (data.showPdf) {
+                    pdfDownloadBtn.classList.remove('hidden');
+                    pdfDownloadBtn.classList.add('flex');
+                    pdfDownloadBtn.href = data.pdfFile;
+                    pdfDownloadBtn.download = data.pdfFile;
+                    
+                   
+                  
+                } else {
+                    pdfDownloadBtn.classList.add('hidden');
+                    pdfDownloadBtn.classList.remove('flex');
+                }
+                
+               
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modalContent.classList.remove('scale-95', 'opacity-0');
+                    modalContent.classList.add('scale-100', 'opacity-100');
+                }, 10); 
+            }
+
+            function closeModal() {
+              
+                modalContent.classList.remove('scale-100', 'opacity-100');
+                modalContent.classList.add('scale-95', 'opacity-0');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    
+                    modalBody.innerHTML = '';
+                    modalBody.scrollTop = 0; 
+                }, 200); 
+            }
+
+            
+
+           
+            menuButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modalId = button.getAttribute('data-modal-id');
+                    openModal(parseInt(modalId, 10));
+                });
+            });
+
+            
+            modalCloseX.addEventListener('click', closeModal);
+            modalCloseBtn.addEventListener('click', closeModal);
+            
+            
+            modal.addEventListener('click', (e) => {
+                if (e.target.id === 'modal' || e.target.id === 'modal-overlay') {
+                    closeModal();
+                }
+            });
+
+           
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    closeModal();
+                }
+            });
+
+        });
+    </script>
+
+</body>
+</html>
